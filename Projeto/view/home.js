@@ -14,8 +14,8 @@ function adicionaLinha() {
     let celula4 = linha.insertCell(3);
     celula1.innerHTML = desc.value; 
     celula2.innerHTML = quant.value;
-    celula3.innerHTML = "R$"+ pr.value; 
-    celula4.innerHTML = "R$"+ quant.value * pr.value; 
+    celula3.innerHTML = "R$ "+ pr.value+",00"; 
+    celula4.innerHTML = "R$ "+ quant.value * pr.value+",00"; 
     totalc = totalc + (quant.value * pr.value);
     
     total.value="R$ "+totalc+",00";
