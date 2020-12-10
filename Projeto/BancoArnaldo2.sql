@@ -30,6 +30,19 @@ create table Vendas(
     references Produtos(cod)
 );
 
+
+
+-- Atualiza a quantidade de produtos quando eles são comprados
+create trigger tr_produto_comprado after insert on Compras
+for each row
+update Produtos set quantidade = quantidade + new.quantidade where cod = new.codProduto;
+
+-- Atualiza a quantidade de produtos quando eles são vendidos
+create trigger tr_produto_vendido after insert on Vendas
+for each row
+update Produtos set
+quantidade = quantidade - new.quantidade  where cod = new.codProduto;
+
 describe Produtos;
 describe Compras;
 describe Vendas;
