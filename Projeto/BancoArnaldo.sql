@@ -16,7 +16,9 @@ create table Compras(
     codProduto integer not null,
     custo decimal(6,2) not null,
     quantidade integer not null,
-    primary key(cod)
+    primary key (cod),
+    constraint fk_cod_prod foreign key (codProduto)
+	references Produtos(cod)
 );
 
 create table Vendas(

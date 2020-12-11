@@ -15,17 +15,32 @@
 	},
 	"Class" : [
 		{
-			"name" : "className1",
+			"name" : "Produtos",
 			"attributes" : [
-				"attr1",
-				"attr2"
+				"cod",
+				"nome",
+				"descricao",
+				"valor",
+				"quantidade"
 			]
 		},
 		{
-			"name" : "className2",
+			"name" : "Compras",
 			"attributes" : [
-				"attr1",
-				"attr2"
+				"cod",
+				"data",
+				"codProduto",
+				"custo",
+				"quantidade"
+			]
+		},
+		{
+			"name" : "Vendas",
+			"attributes" : [
+				"cod",
+				"codProduto",
+				"preco",
+				"quantidade"
 			]
 		}
 	]
