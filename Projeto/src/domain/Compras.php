@@ -4,7 +4,6 @@ class Compras
 {
 	var $cod;
 	var $data;
-	var $codProduto;
 	var $custo;
 	var $quantidade;
 
@@ -24,15 +23,6 @@ class Compras
 	function setData($data)
 	{
 		$this->data = $data;
-	}
-
-	function getCodProduto()
-	{
-		return $this->codProduto;
-	}
-	function setCodProduto($codProduto)
-	{
-		$this->codProduto = $codProduto;
 	}
 
 	function getCusto()
@@ -68,7 +58,6 @@ class ComprasDAO
 			if (Connection::getInstance()->exec($query) >= 1) {
 				$result["cod"] = connection::getInstance()->lastInsertCod();
 				$result["data"] = $compras->getData();
-				$result["codProduto"] = $compras->getCodProduto();
 				$result["custo"] = $compras->getCusto();
 				$result["quantidade"] = $compras->getQuantidade();
 			} else {
@@ -94,7 +83,6 @@ class ComprasDAO
 				$compras = new Compras();
 				$compras->setCod($linha->cod);
 				$compras->setData($linha->data);
-				$compras->setCodProduto($linha->codProduto);
 				$compras->setCusto($linha->custo);
 				$compras->setQuantidade($linha->quantidade);
 				$result[] = $compras;
@@ -119,7 +107,6 @@ class ComprasDAO
 					$compras = new Compras();
 					$compras->setCod($linha->cod);
 					$compras->setData($linha->data);
-					$compras->setCodProduto($linha->codProduto);
 					$compras->setCusto($linha->Custo);
 					$compras->setQuantidade($linha->quantidade);
 

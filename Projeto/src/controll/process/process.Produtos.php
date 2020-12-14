@@ -1,39 +1,59 @@
 <?php
 
-	require("../../domain/connection.php");
-	require("../../domain/Produtos.php");
+require("../../domain/connection.php");
+require("../../domain/Produtos.php");
 
-	class ProdutosProcess {
-		var $Pd;
+class ProdutosProcess
+{
+	var $Pd;
 
-		function doGet($arr){
-			$Pd = new ProdutosDAO();
-			$sucess = "use to result to DAO";
-			http_response_code(200);
-			echo json_encode($sucess);
+	function doGet($arr)
+	{
+		$Pd = new ProdutosDAO();
+		if ($arr["cod"] == "0") {
+			$sucess = $Pd->readAll();
+		} else {
+			$sucess = $Pd->read($arr["cod"]);
 		}
 
-
-		function doPost($arr){
-			$Pd = new ProdutosDAO();
-			$sucess = "use to result to DAO";
-			http_response_code(200);
-			echo json_encode($sucess);
-		}
-
-
-		function doPut($arr){
-			$Pd = new ProdutosDAO();
-			$sucess = "use to result to DAO";
-			http_response_code(200);
-			echo json_encode($sucess);
-		}
-
-
-		function doDelete($arr){
-			$Pd = new ProdutosDAO();
-			$sucess = "use to result to DAO";
-			http_response_code(200);
-			echo json_encode($sucess);
-		}
+		http_response_code(200);
+		echo json_encode($sucess);
 	}
+
+
+	function doPost($arr)
+	{
+		$Pd = new ProdutosDAO();
+		$Produtos = new Produtos();
+		$Produtos->setCod($arr["cod"]);
+		$Produtos->setNome($arr["nome"]);
+		$Produtos->setValor($arr["valor"]);
+		$Produtos->setQuantidade($arr["quantidade"]);
+		$sucess = $Pd->create($Produtos);
+		http_response_code(200);
+		echo json_encode($sucess);
+	}
+
+
+	function doPut($arr)
+	{
+		$Pd = new ProdutosDAO();
+		$Produtos = new Produtos();
+		$Produtos->setCod($arr["cod"]);
+		$Produtos->setNome($arr["nome"]);
+		$Produtos->setValor($arr["valor"]);
+		$Produtos->setQuantidade($arr["quantidade"]);
+		$sucess = $Pd->update($Produtos);
+		http_response_code(200);
+		echo json_encode($sucess);
+	}
+
+
+	function doDelete($arr)
+	{
+		$Pd = new ProdutosDAO();
+		$sucess = $Pd->delete($arr["cod"]);
+		http_response_code(200);
+		echo json_encode($sucess);
+	}
+}
