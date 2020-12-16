@@ -7,18 +7,19 @@ class ProdutosProcess
 {
 	var $Pd;
 
+
 	function doGet($arr)
 	{
-		$Pd = new ProdutosDAO();
+		$md = new ProdutosDAO();
 		if ($arr["cod"] == "0") {
-			$sucess = $Pd->readAll();
+			$sucess = $md->readAll();
 		} else {
-			$sucess = $Pd->read($arr["cod"]);
+			$sucess = $md->read($arr["cod"]);
 		}
-
 		http_response_code(200);
 		echo json_encode($sucess);
 	}
+
 
 
 	function doPost($arr)

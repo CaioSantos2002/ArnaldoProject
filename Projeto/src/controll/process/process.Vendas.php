@@ -9,11 +9,11 @@ class VendasProcess
 
 	function doGet($arr)
 	{
-		$Vd = new VendasDAO();
-		if ($arr['cod'] == "0") {
-			$sucess = $Vd->readAll();
+		$vd = new VendasDAO();
+		if ($arr["cod"] == "0") {
+			$sucess = $vd->readAll();
 		} else {
-			$sucess = $Vd->read($arr['cod']);
+			$sucess = $vd->read($arr["cod"]);
 		}
 
 		http_response_code(200);

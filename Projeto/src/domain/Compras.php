@@ -56,7 +56,7 @@ class ComprasDAO
 			$con = new Connection();
 
 			if (Connection::getInstance()->exec($query) >= 1) {
-				$result["cod"] = connection::getInstance()->lastInsertCod();
+				$result["cod"] = connection::getInstance()->lastInsertId();
 				$result["data"] = $compras->getData();
 				$result["custo"] = $compras->getCusto();
 				$result["quantidade"] = $compras->getQuantidade();

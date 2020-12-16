@@ -9,17 +9,16 @@ class ComprasProcess
 
 	function doGet($arr)
 	{
-		$Cd = new ComprasDAO();
+		$cd = new ComprasDAO();
 		if ($arr["cod"] == "0") {
-			$sucess = $Cd->readAll();
+			$sucess = $cd->readAll();
 		} else {
-			$sucess = $Cd->read($arr["cod"]);
+			$sucess = $cd->read($arr["cod"]);
 		}
 
 		http_response_code(200);
 		echo json_encode($sucess);
 	}
-
 
 	function doPost($arr)
 	{
